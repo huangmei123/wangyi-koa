@@ -12,11 +12,14 @@
 </template>
 <script>
 import amapFile from '../../utils/amap-wx.js'
+import {mapState} from 'vuex'
 export default {
   data(){
     return{
-      cityName:'南昌'
     }
+  },
+  computed:{
+    ...mapState(['cityName'])
   },
   methods:{
     toMappage(){

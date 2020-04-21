@@ -18,20 +18,22 @@
 
 <script>
 import amapFile from '../../utils/amap-wx'
-// import { mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
     data(){
         return {
             tips: [],
             longitude: 0,
             latitude: 0,
-
+            markers: [],
+            keywords:''
         }
     },
     mounted(){
         this.getMapaddress()
     },
     methods:{
+       ...mapMutations(['update']),
         getMapaddress(){
             let _this = this
             var myAmapFun = new amapFile.AMapWX({
@@ -42,21 +44,50 @@ export default {
                 iconWidth: 22,
                 iconHeight: 32,
                 success(data) {
-                    console.log(data)
-                    // let marker = [
-                    //     {
-                    //     id: data[0].id,
-                    //     latitude: data[0].latitude,
-                    //     longitude: data[0].longitude,
-                    //     width: data[0].width,
-                    //     height: data[0].height
-                    //     }
-                    // ]
-                    // _this.markers = marker
-                    // _this.longitude = data[0].longitude
-                    // _this.latitude = data[0].latitude
+                    // console.log(data)
+                    let marker = [
+                        {
+                        id: data[0].id,
+                        // 经纬度
+                        latitude: data[0].latitude,
+                        longitude: data[0].longitude,
+                        width: data[0].width,
+                        height: data[0].height
+                        }
+                    ]
+                    _this.markers = marker
+                    _this.longitude = data[0].longitude
+                    _this.latitude = data[0].latitude
                 },
+                fail (info) {
+                  console.log(info)
+                }
             })
+        },
+        //当输入某地址时，弹出相类似的框，并选中
+        bindInput(e) {
+        // console.log(e)
+          let _this = this
+          let keywords = _this.keywords
+          var myAmapFun = new amapFile.AMapWX({key:'a3723a398c0185011d58501db1fe4e82'})
+          //输入补全
+          myAmapFun.getInputtips({
+            keywords: keywords,
+            location: '',
+            success: function(data) {
+              // console.log(data)
+              if (data && data.tips) {
+                _this.tips = data.tips
+              }
+            }
+          })
+        },
+        bindSearch (cityName) {
+          //非父子组件中的通信
+          this.update({cityName: cityName})
+          wx.navigateBack({
+            delta: 1
+          });
         }
     }
 }
