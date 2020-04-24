@@ -7,3 +7,10 @@
   amap-wx 去获取key，同时下载使用高德地图的包amap-wx.js(存放在utils)
   - 在得到位置时使用store/index.js，获得数据源。同时在src/main.js引入全局。
   得到数据源后，一定要去解构...mapState
+
+### src/pages/index首页设置
+- swiper 滑屏 
+  block无具体含义，用来做for循环
+
+- 获取数据的方法 getData 封装接口请求
+  封装在utils/index.js里
