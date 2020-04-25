@@ -10,4 +10,5 @@ const router = require('koa-router')({
 //     ctx.body = 'hello world'
 //     //从数据库获得数据 返回前端
 // })
-module.exports= router
+
+module.exports = router
