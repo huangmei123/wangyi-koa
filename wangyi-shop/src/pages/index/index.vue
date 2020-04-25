@@ -18,20 +18,49 @@
         </block>
       </swiper>
     </div>
+    <!-- 5个图标跳转 -->
+    <div class="channel">
+      <div v-for="(item, index) in channel" :key="index" @click="categroyList(item.id)">
+        <img :src="item.icon_url" alt="">
+        <p>{{item.name}}</p>
+      </div>
+    </div>
+    <!-- 品牌 -->
+    <div class="brand">
+      <div class="head" @click="tobrandList">
+        品牌制造商直供
+      </div>
+      <div class="content">
+        <div v-for="(item, index) in brandList" :key="index" @click="branddetail(item.id)">
+          <div>
+            <p>{{item.name}}</p>
+            <p class="price">{{item.floor_price}}元起</p>
+          </div>
+          <img :src="item.new_pic_url" alt="">
+        </div>
+      </div>
+    </div>
   </div>
+
 </template>
 <script>
 import amapFile from '../../utils/amap-wx.js'
-import {mapState} from 'vuex'
+import {mapState,mapMutations} from 'vuex'
 import { get } from '../../utils'
 export default {
   data(){
     return{
-      banner:[]
+      banner:[],
+      channel:[],
+      brandList:[]
     }
   },
   computed:{
     ...mapState(['cityName'])
+  },
+  mounted () {
+    this.getData()
+    this.getCityName()
   },
   methods:{
     toMappage(){
@@ -84,7 +113,15 @@ export default {
     async getData() {
       const data = await get('/index/index') // http://localhost:5757/lm/index/index
       console.log(data)
-    
+      this.banner = data.banner
+      this.channel=data.channel
+      this.brandList = data.brandList
+    },
+    categroyList (id) {
+      console.log(123)
+      wx.navigateTo({
+        url: '/pages/categroylist/main?id=' + id
+      })
     },
   }
 }

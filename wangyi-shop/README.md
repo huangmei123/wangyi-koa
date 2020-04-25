@@ -14,3 +14,8 @@
 
 - 获取数据的方法 getData 封装接口请求
   封装在utils/index.js里
+  步骤：
+  1. 在page/index/index.vue中写好盒子和样式，
+  2. 到后端的controller/home/index.js里去获取：const brandList/..。同时在ctx.body添加'brandList':brandList
+  3. 回到index.vue中写好data里的 channel:[],
+  同时到 async getData()里添加 this.brandList = data.brandList
