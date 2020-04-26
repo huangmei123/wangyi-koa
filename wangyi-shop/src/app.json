@@ -6,7 +6,9 @@
     "pages/cart/main",
     "pages/my/main",
     "pages/topic/main",
-    "pages/mappage/main"
+    "pages/mappage/main",
+    "pages/brandlist/mian",
+    "pages/newgoods/main"
    
   ],
   "window": {
