@@ -17,11 +17,15 @@ module.exports= async(ctx) =>{
     const hotGoods = await mysql('nideshop_goods').column('id', 'name', 'list_pic_url', 'retail_price', 'goods_brief').where({
       is_hot: 1
     }).limit(5).select()
+    //专题精选
+    const topicList = await mysql('nideshop_topic').limit(3).select()
+
     ctx.body = {
       'banner': banner,
       'channel':channel,
       'brandList':brandList,
       'newGoods':newGoods,
-      'hotGoods':hotGoods
+      'hotGoods':hotGoods,
+      'topicList':topicList
     }
 }
