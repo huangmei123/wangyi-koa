@@ -86,6 +86,29 @@
         </ul>
       </div>
     </div>
+    <!-- 专题精选 -->
+    <div class="topicList">
+      <div class="topicList-top">
+        专题精选
+        <span class="icon"></span>
+      </div>
+      <div class="list">
+        <ul>
+          <scroll-view class="scroll-view" :scroll-x="true">
+            <li v-for="(item ,index) in topicList" :key="index" @click="topicdetail(item.id)">
+              <img :src="item.item_pic_url" alt="">
+              <div class="btom">
+                <div>
+                  <p>{{item.title}}</p>
+                  <p>{{item.subtitle}}</p>
+                </div>
+                <div>{{item.price_info}}元起</div>
+              </div>
+            </li>
+          </scroll-view>
+        </ul>
+      </div>
+    </div>
   </div>
 
 </template>
@@ -100,7 +123,8 @@ export default {
       channel:[],
       brandList:[],
       newGoods:[],
-      hotGoods:[]
+      hotGoods:[],
+      topicList: [],
     }
   },
   computed:{
@@ -166,6 +190,7 @@ export default {
       this.brandList = data.brandList
       this.newGoods = data.newGoods
       this.hotGoods = data.hotGoods
+      this.topicList = data.topicList
     },
     categroyList (id) {
       console.log(123)
@@ -194,9 +219,14 @@ export default {
         })
       }
     },
-
-  }
-}
+    topicdetail (id) {
+          wx.navigateTo({
+            url: '/pages/topicdetail/main?id=' + id
+          })
+        }
+      }
+    }
+  
 </script>
 <style lang="less" scoped>
 @import "./style.less";

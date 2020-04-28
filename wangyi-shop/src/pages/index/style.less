@@ -213,4 +213,71 @@
         }
       }
     }
+    .topicList{
+      margin-top: 20rpx;
+      background-color: #fff;
+      &-top{
+        text-align: center;
+        padding: 36rpx;
+        vertical-align: middle;
+        .icon{
+          display: inline-block;
+          width: 32rpx;
+          height: 32rpx;
+          margin-left: 5rpx;
+          background: url('../../../static/images/right.png') no-repeat;
+          background-size: 100% 100%;
+          vertical-align: middle;
+        }
+      }
+      .list{
+        .scroll-view{
+          white-space: nowrap;
+  
+          li{
+            display: inline-block;
+            width: 575rpx;
+            margin-left: 25rpx;
+            img{
+              display: block;
+              width: 575rpx;
+              height: 325rpx;
+              border-radius: 10rpx;
+            }
+            .btom{
+              display: flex;
+              justify-content: space-between;
+              margin-top: 42rpx;
+              width: 100%;
+              div:nth-child(1) {
+                width: 90%;
+                p{
+                  margin-top: 8rpx;
+                }
+                p:nth-child(1) {
+                  font-size: 30rpx;
+                  font-weight: bold;
+                }
+                p:nth-child(2) {
+                  width: 90%;
+                  font-size: 24rpx;
+                  color: #8a8a8a;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+              }
+              div:nth-child(2) {
+                margin-top: 8rpx;
+                color: #9c3232;
+                font-size: 24rpx;
+              }
+            }
+          }
+          li:last-child{
+            margin-right: 25rpx;
+          }
+        }
+      }
+    }
 }
