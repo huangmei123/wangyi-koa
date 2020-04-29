@@ -1,6 +1,5 @@
 {
   "pages": [
-   
     "pages/index/main",
     "pages/category/main",
     "pages/cart/main",
@@ -8,7 +7,8 @@
     "pages/topic/main",
     "pages/mappage/main",
     "pages/brandlist/mian",
-    "pages/newgoods/main"
+    "pages/newgoods/main",
+    "pages/topicdetail/main"
    
   ],
   "window": {

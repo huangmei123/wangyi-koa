@@ -19,3 +19,5 @@
   2. 到后端的controller/home/index.js里去获取：const brandList/..。同时在ctx.body添加'brandList':brandList
   3. 回到index.vue中写好data里的 channel:[],
   同时到 async getData()里添加 this.brandList = data.brandList
+
+  在专题精选里添加文件topicdetail

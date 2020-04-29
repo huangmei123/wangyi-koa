@@ -109,6 +109,25 @@
         </ul>
       </div>
     </div>
+    <!-- 好物 -->
+    <div class="newcategory">
+      <div class="list" v-for="(item ,index) in newCategoryList" :key="index">
+        <div class="head">{{item.name}}好物</div>
+        <div class="sublist">
+          <div v-for="(subitem, subindex) in item.goodsList" :key="subindex">
+            <img :src="subitem.list_pic_url" alt="">
+            <p>{{subitem.name}}</p>
+            <p>{{subitem.retail_price}}</p>
+          </div>
+          <div>
+            <div class="last">
+              <p>{{item.name}}好物</p>
+              <span class="icon"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </template>
@@ -125,6 +144,7 @@ export default {
       newGoods:[],
       hotGoods:[],
       topicList: [],
+      newCategoryList: []
     }
   },
   computed:{
@@ -191,6 +211,7 @@ export default {
       this.newGoods = data.newGoods
       this.hotGoods = data.hotGoods
       this.topicList = data.topicList
+      this.newCategoryList = data.newCategoryList
     },
     categroyList (id) {
       console.log(123)
