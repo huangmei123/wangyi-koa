@@ -11,4 +11,6 @@ const router = require('koa-router')({
 //     //从数据库获得数据 返回前端
 // })
 
+//search页面相关的接口
+router.post('./search/addhistoryaction',controllers.search.index.addHistoryAction)
 module.exports = router
