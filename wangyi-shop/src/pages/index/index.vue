@@ -213,6 +213,11 @@ export default {
       this.topicList = data.topicList
       this.newCategoryList = data.newCategoryList
     },
+    toSearch () {
+      wx.navigateTo({
+        url: '/pages/search/main'
+      })
+    },
     categroyList (id) {
       console.log(123)
       wx.navigateTo({

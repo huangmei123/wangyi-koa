@@ -21,3 +21,10 @@
   同时到 async getData()里添加 this.brandList = data.brandList
 
   在专题精选里添加文件topicdetail
+
+3. 搜索功能的开发 src/pages/search
+- 做好静态布局
+- 在搜索的时候，找取输入的商品，做接口请求
+  confirm-type="search" 就是类似于键盘的发送按钮 它是可以被我们自己定义的只能在type为text的时候设置
+  v-model="words" 进行绑定
+  @focus="inputFocus" 聚焦
