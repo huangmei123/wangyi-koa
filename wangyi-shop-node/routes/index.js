@@ -1,5 +1,5 @@
 const router = require('koa-router')({
-    prefix: '/lm'
+    prefix: '/lm' //路由前缀
   })
   const controllers = require('../controllers/index')
   
@@ -12,5 +12,6 @@ const router = require('koa-router')({
 // })
 
 //search页面相关的接口
+router.get('./search/indexaction',controllers.index.indexaction)
 router.post('./search/addhistoryaction',controllers.search.index.addHistoryAction)
 module.exports = router

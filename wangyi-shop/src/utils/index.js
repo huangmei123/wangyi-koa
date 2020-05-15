@@ -50,8 +50,8 @@ function request (url, method, data, header = {}) {
     })
   })
 }
-
-export function get (url, data) {
+//封装get、post
+export function get (url, data) {//http://localhost:5757/lm/index/
   return request(url, 'GET', data)
 }
 export function post (url, data) {

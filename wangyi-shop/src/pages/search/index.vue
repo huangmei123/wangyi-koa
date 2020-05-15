@@ -90,7 +90,8 @@ export default {
       const data = await post('/search/clearhistoryAction', {
         openId: this.openid
       })
-      if (data) {
+      if
+       (data) {
         this.historyData = []
       }
     },
@@ -119,6 +120,7 @@ export default {
       this.getHotData()
       this.getlistData()
     },
+    //获取
     async getHotData (first) {
       const data = await get('/search/indexaction?openId=' + this.openid)
       this.historyData = data.historyData

@@ -1,6 +1,7 @@
 // 获取基础配置
 const configs = require('./config')
 //npm i knex
+//Mysql的辅助
 var knex = require('knex') ({
   client: 'mysql',
   connection: {

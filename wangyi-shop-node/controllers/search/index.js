@@ -6,7 +6,7 @@ async function indexAction(ctx) {
   const defaultKeyword = await mysql('nideshop_keywords').where({
     is_default: 1
   }).limit(1).select()
-  // 取出热门关键字
+  // 取出热门关键字，并进行分类
   const hotKeywordList = await mysql('nideshop_keywords').distinct('keyword').column('keyword', 'is_hot').limit(10).select()
 
   const historyData = await mysql('nideshop_search_history').where({
@@ -48,11 +48,12 @@ async function helperAction(ctx) {
 // 添加搜索历史
 async function addHistoryAction(ctx) {
   const {openId, keyword} = ctx.request.body
-
+//上一次查询的历史
   const oldData = await mysql('nideshop_search_history').where({
     'user_id': openId,
     'keyword': keyword
   })
+  //当历史记录没找到 就插入进去
   if (oldData.length == 0) {
     const data = await mysql('nideshop_search_history').insert({
       'user_id': openId,
